@@ -1,5 +1,6 @@
-import tkinter as tkinterfrom tkinter import simpledialog
-import sqlite3, webrowser
+import tkinter as tk
+from tkinter import simpledialog
+import sqlite3, webbrowser
 
 # DB Init
 conn = sqlite3.connect("problems.db")
@@ -18,17 +19,17 @@ conn.commit()
 def add_problem():
     url = simpledialog.askstring("追加", "問題URLを入力してください:")
     title = simpledialog.askstring("追加", "問題タイトル:")
-    c.execute("INSERT INTO PROBLEMS (url, title, status, comment) VALUES (?, ?, ?, ?)",
+    c.execute("INSERT INTO problems (url, title, status, comment) VALUES (?, ?, ?, ?)",
         (url, title, "未解決", ""))
     conn.commit()
-    referesh_list()
+    refresh_list()
 
 def add_comment():
     selected = listbox.curselection()
     if not selected: return
     idx = selected[0]
     pid, title = problems[idx]
-    somment = simpledialog.askstring("コメント追加", "コメントを入力:")
+    comment = simpledialog.askstring("コメント追加", "コメントを入力:")
     c.execute("UPDATE problems SET comment = ? WHERE id = ?", (comment, pid))
     conn.commit()
     refresh_list()
