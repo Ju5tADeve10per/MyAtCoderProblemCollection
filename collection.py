@@ -139,7 +139,7 @@ code_frame.bind(
 canvas.create_window((0, 0), window=code_frame, anchor="nw")
 canvas.configure(yscrollcommand=scrollbar.set)
 
-canvas.pac(side="left", fill="both", expand=True)
+canvas.pack(side="left", fill="both", expand=True)
 scrollbar.pack(side="right", fill="y")
 
 refresh_problems()
