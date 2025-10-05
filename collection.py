@@ -132,11 +132,11 @@ scrollbar = ttk.Scrollbar(right_frame, orient="vertical", command=canvas.yview)
 code_frame = tk.Frame(canvas)
 
 code_frame.bind(
-    "<Configure>"
+    "<Configure>",
     lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
 )
 
-canvas.create_window(0, 0), window=code_frame, anchor="nw")
+canvas.create_window((0, 0), window=code_frame, anchor="nw")
 canvas.configure(yscrollcommand=scrollbar.set)
 
 canvas.pac(side="left", fill="both", expand=True)
